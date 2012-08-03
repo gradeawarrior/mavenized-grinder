@@ -1,0 +1,77 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.proofpoint.test.grinder</groupId>
+    <artifactId>scripts</artifactId>
+    <version>0.1-SNAPSHOT</version>
+    <name>Run Grinder Scripts</name>
+
+    <parent>
+        <groupId>com.proofpoint.test.grinder</groupId>
+        <artifactId>mavenized-grinder</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <properties>
+        <description>maven test runs</description>
+        <grinder.processes>1</grinder.processes>
+        <grinder.threads>1</grinder.threads>
+        <grinder.runs>10</grinder.runs>
+        <grinder.useConsole>false</grinder.useConsole>
+        <grinder.consoleHost>localhost</grinder.consoleHost>
+        <grinder.logProcessStreams>false</grinder.logProcessStreams>
+        <test.command>foobar</test.command>
+        <grinder.script>tests.py</grinder.script>
+        <test.url>http://www.example.com</test.url>
+    </properties>
+
+    <build>
+        <filters>
+            <filter>src/main/resources/grinder.properties</filter>
+            <filter>src/main/resources/application.properties</filter>
+        </filters>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>test</id>
+                        <phase>test</phase>
+                        <configuration>
+                            <tasks name="testing ..."
+                                   description="put or read data "
+                                   unless="maven.enable_feature.skip">
+                                <echo message="=== mvn  -Dtest.command=${test.command} =="/>
+                                <java classname="net.grinder.Grinder" fork="true"
+                                      dir="${project.build.directory}/classes/" classpathref="maven.test.classpath">
+                                    <jvmarg value="-Xms512m"/>
+                                    <jvmarg value="-Xmx2048m"/>
+                                    <jvmarg value="-Dgrinder.script=tests.py"/>
+                                    <jvmarg value="-Dgrinder.logProcessStreams=${grinder.logProcessStreams}"/>
+                                </java>
+                            </tasks>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.proofpoint.test.grinder</groupId>
+            <artifactId>utils</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+</project>

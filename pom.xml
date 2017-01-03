@@ -27,11 +27,36 @@
             <artifactId>guava</artifactId>
             <version>r09</version>
         </dependency>
+	    <dependency>
+    	    <groupId>net.sf.grinder</groupId>
+    	    <artifactId>grinder-core</artifactId>
+    	    <version>3.11</version>
+	    </dependency>
         <dependency>
-            <groupId>TheGrinder</groupId>
+            <groupId>net.sf.grinder</groupId>
             <artifactId>grinder</artifactId>
-            <version>3.3</version>
+            <version>3.11</version>
         </dependency>
+	    <dependency>
+    	    <groupId>net.sf.grinder</groupId>
+    	    <artifactId>grinder-dcr-agent</artifactId>
+    	    <version>3.11</version>
+	    </dependency>
+	    <dependency>
+    	    <groupId>net.sf.grinder</groupId>
+    	    <artifactId>grinder-test-support</artifactId>
+    	    <version>3.11</version>
+	    </dependency>
+	    <dependency>
+    	    <groupId>net.sf.grinder</groupId>
+    	    <artifactId>grinder-http</artifactId>
+    	    <version>3.11</version>
+	    </dependency>
+	    <dependency>
+    	    <groupId>net.sf.grinder</groupId>
+    	    <artifactId>grinder-httpclient</artifactId>
+    	    <version>3.11</version>
+	    </dependency>
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>

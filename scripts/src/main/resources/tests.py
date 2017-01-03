@@ -5,13 +5,22 @@ from com.proofpoint.grinder import GrinderUtil
 from HTTPClient import NVPair
 from java.util import UUID
 
-log = grinder.logger.output
-out = grinder.logger.LOG
+log = grinder.logger.info
+#out = grinder.logger.LOG
 
 grinderUtil = GrinderUtil.getSingleton()
 applicationProperties = grinderUtil.getApplicationProperties()
 
 testCommand = applicationProperties.getProperty("test.command")
+url = applicationProperties.getProperty("test.url")
+
+grinderUtil = GrinderUtil.getSingleton()
+applicationProperties = grinderUtil.getApplicationProperties()
+
+# The default command should be "foobar"
+testCommand = applicationProperties.getProperty("test.command")
+
+# The default should be "http://www.example.com/" set in the pom.xml
 url = applicationProperties.getProperty("test.url")
 
 testWrap = Test(1, "General Tests")
@@ -20,8 +29,6 @@ wrappedRequest = testWrap.wrap(HTTPRequest())
 tests = { "Example" :Test(1, "Index Page") }
 
 execCounter = 0
-
-print "testCommand=%s" % (testCommand)
 
 class TestRunner:
     def __call__(self):
@@ -35,7 +42,7 @@ class TestRunner:
         elif testCommand == "foobar":
             test1()
         elif testCommand == "helloworld":
-            test2()
+             test2()
 
 
 def uploadFile():

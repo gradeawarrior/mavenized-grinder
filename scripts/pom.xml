@@ -23,7 +23,7 @@
         <grinder.logProcessStreams>false</grinder.logProcessStreams>
         <test.command>foobar</test.command>
         <grinder.script>tests.py</grinder.script>
-        <test.url>http://www.example.com</test.url>
+        <test.url>http://www.example.com/</test.url>
     </properties>
 
     <build>

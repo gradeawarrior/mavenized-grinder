@@ -3,7 +3,7 @@ Mavenized-Grinder
 
 This is an example Java project for running [The Grinder](http://grinder.sourceforge.net) Java load testing framework using Maven. The added benefit of developing your Grinder load testing scripts this way is that it follows all the great conventions of packaging and executing your Java project using Maven. This in turn also makes it trivial to incorporate into Jenkins and generating automated reports (Jenkins plugin required).
 
-_**NOTE:** All [Grinder](http://grinder.sourceforge.net) features are supported, which includes load testing RESTful webservices to simulating webtraffic load to a website. Please review all features on [The Grinder](http://grinder.sourceforge.net) project website. Modifications can be made_
+_**NOTE:** All [Grinder](http://grinder.sourceforge.net) features are supported, which includes load testing RESTful webservices to simulating webtraffic load to a website. Please review all features on [The Grinder](http://grinder.sourceforge.net) project website. Modifications can be made under `scripts/src/main/resources`_
 
 # Prerequisites
 
